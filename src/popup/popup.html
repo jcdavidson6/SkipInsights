@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skip Insights</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <section id="onboarding" class="screen hidden" aria-labelledby="welcome-title">
+      <p class="eyebrow">SKIP INSIGHTS</p>
+      <h1 id="welcome-title">See what you skip.</h1>
+      <p>Skip Insights records track changes in Spotify's web player to show patterns in your listening.</p>
+      <ul>
+        <li>Stored only on this device.</li>
+        <li>No Spotify API connection or network requests.</li>
+        <li>Pause, export, or delete your data anytime.</li>
+      </ul>
+      <button id="start-button" class="primary">Start tracking</button>
+    </section>
+
+    <section id="app" class="screen hidden">
+      <header>
+        <div>
+          <p class="eyebrow">SKIP INSIGHTS</p>
+          <h1>Weekly review</h1>
+        </div>
+        <span class="badge">Stored on this device</span>
+      </header>
+      <div id="health-banner" class="banner hidden" role="status">Tracking looks broken. Spotify may have changed its player.</div>
+      <div class="tabs" role="group" aria-label="Week selection">
+        <button class="tab active" data-offset="0">This week</button>
+        <button class="tab" data-offset="-1">Last week</button>
+      </div>
+      <p id="empty-state" class="empty hidden">Play a few songs and check back.</p>
+      <section id="summary" class="hidden">
+        <div class="metrics">
+          <article class="metric"><span>Plays</span><strong id="plays">0</strong><small id="plays-change"></small></article>
+          <article class="metric"><span>Skip rate</span><strong id="skip-rate">0%</strong><small id="skip-change"></small></article>
+          <article class="metric"><span>Early skips</span><strong id="early-skips">0%</strong><small id="early-change"></small></article>
+        </div>
+        <section class="panel"><h2>Most skipped artists</h2><div id="artists" class="bars"></div></section>
+        <section class="panel"><h2>Most skipped tracks</h2><div id="tracks" class="list"></div></section>
+        <section class="panel"><h2>Skip rate by hour</h2><div class="chart"><div class="y-axis"><span>100%</span><span>0%</span></div><div id="hours" class="hours" aria-label="Skip rate by hour chart"></div></div></section>
+      </section>
+      <div class="actions">
+        <button id="sample-button" class="secondary hidden">Load sample data</button>
+        <button id="pause-button" class="secondary">Pause tracking</button>
+        <button id="export-button" class="secondary">Export data</button>
+        <button id="delete-button" class="danger">Delete all</button>
+      </div>
+      <p id="paused-state" class="paused hidden">Tracking is paused.</p>
+    </section>
+  </main>
+  <script src="../config.js"></script>
+  <script src="../storage.js"></script>
+  <script src="../aggregate.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

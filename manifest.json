@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Skip Insights",
+  "version": "1.0.0",
+  "description": "See what you skip in the Spotify web player.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://open.spotify.com/*"],
+  "action": {
+    "default_title": "Skip Insights",
+    "default_popup": "src/popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/*"],
+      "js": ["src/config.js", "src/classify.js", "src/storage.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "skip-insights",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}
